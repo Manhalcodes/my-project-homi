@@ -8,7 +8,7 @@ export default function JournalEntry({ user, onNewEntry }) {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch("http://localhost:5000/api/entries", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/entries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -7,7 +7,7 @@ import RequestReset from "./RequestReset";
 import ResetPassword from "./ResetPassword";
 import { Heart, Leaf, Calendar, Edit3, User, Lock, Mail, Home, BookOpen, TrendingUp, MessageCircle, Award, Plus, ArrowRight, Sparkles } from 'lucide-react';
 
-const API_URL = "http://localhost:5000/api"; 
+const API_URL = process.env.REACT_APP_API_URL; 
 
 function App() {
   const [user, setUser] = useState(() => {
