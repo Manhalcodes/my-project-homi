@@ -1,0 +1,5 @@
+{
+  "name": "homi-root",
+  "private": true,
+  "workspaces": ["client", "server"]
+}
