@@ -1,5 +1,11 @@
 {
   "name": "homi-root",
   "private": true,
-  "workspaces": ["client", "server"]
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "dependencies": {
+    "nodemailer": "^7.0.5"
+  }
 }

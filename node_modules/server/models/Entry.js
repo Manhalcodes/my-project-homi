@@ -1,8 +1,32 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
 const EntrySchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  text: { type: String, required: true },
-  aiFeedback: { type: String },
-  date: { type: Date, default: Date.now }
+  user: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User',
+    required: true 
+  },
+  text: { 
+    type: String, 
+    required: [true, 'Journal entry text is required'],
+    minlength: [10, 'Entry must be at least 10 characters long'],
+    maxlength: [10000, 'Entry cannot exceed 10,000 characters']
+  },
+  aiFeedback: { 
+    type: String,
+    default: ''
+  },
+  date: { 
+    type: Date, 
+    default: Date.now 
+  }
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
-export default mongoose.model("Entry", EntrySchema);
+
+// Index for faster querying of user's entries
+EntrySchema.index({ user: 1, date: -1 });
+
+export default mongoose.model('Entry', EntrySchema);
